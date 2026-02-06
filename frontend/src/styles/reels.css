@@ -1,0 +1,99 @@
+/* Fullscreen vertical reels container */
+.reels {
+    height: 100vh;
+    width: 100vw;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+    background: #000;
+    overscroll-behavior-y: contain;
+}
+
+/* Hide noisy scrollbars on WebKit while keeping accessibility */
+.reels::-webkit-scrollbar {
+    width: 0.5rem;
+}
+
+.reels::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+}
+
+/* Each reel fills the viewport and snaps cleanly */
+.reel {
+    position: relative;
+    height: 100vh;
+    width: 100vw;
+    scroll-snap-align: start;
+    overflow: hidden;
+    isolation: isolate;
+}
+
+/* Video covers the entire screen */
+.reel video {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+}
+
+/* Overlay sits on top of the video */
+.reel .overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 20px 16px 32px;
+    color: #fff;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.0) 0%, rgba(0, 0, 0, 0.35) 35%, rgba(0, 0, 0, 0.6) 100%);
+}
+
+/* Description truncated to two lines */
+.reel .description {
+    margin: 0 0 12px 0;
+    font-size: 1rem;
+    line-height: 1.4;
+    max-width: 92%;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Visit Store button */
+.reel .visitBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 16px;
+    border-radius: 10px;
+    border: none;
+    background: #ff3b30;
+    /* eye-catching but neutral */
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
+}
+
+.reel .visitBtn:hover {
+    filter: brightness(1.1);
+}
+
+/* Make sure text is readable on small screens */
+@media (max-width: 420px) {
+    .reel .description {
+        font-size: 0.95rem;
+    }
+
+    .reel .visitBtn {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+    }
+}

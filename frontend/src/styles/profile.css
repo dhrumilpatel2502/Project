@@ -1,0 +1,129 @@
+/* Food Partner Profile layout */
+.profile-page {
+    padding: 16px;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+.profile-card {
+    background: var(--card-bg);
+    /* border: 1px solid var(--border); */
+    /* border-radius: 16px; */
+    box-shadow: var(--shadow);
+    padding: 16px;
+}
+
+.profile-header {
+    display: grid;
+    grid-template-columns: 64px 1fr;
+    gap: 16px;
+    align-items: center;
+}
+
+.profile-avatar {
+    object-fit: cover;
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+}
+
+.profile-info {
+    display: grid;
+    gap: 10px;
+        justify-content: end;
+            justify-items: start;
+}
+
+.chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 0 12px;
+    border-radius: 8px;
+    font-weight: 700;
+    background: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+}
+
+.chip-muted {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    padding: 0 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    background: var(--card-bg);
+    color: var(--muted);
+    border: 1px solid var(--border);
+}
+
+.profile-stats {
+    margin-top: 16px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.stat {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+}
+
+.stat-label {
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.stat-value {
+    display: inline-block;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    font-weight: 700;
+    color: var(--text);
+}
+
+.profile-divider {
+    margin: 16px 0;
+    border: 0;
+    border-top: 1px solid var(--border);
+}
+
+.videos-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.video-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--muted);
+    font-weight: 600;
+    /* Keep a square-ish cell */
+    aspect-ratio: 1 / 1;
+    min-height: 88px;
+}
+
+/* Slightly denser grid on larger screens */
+@media (min-width: 640px) {
+    .profile-page {
+        padding: 24px;
+    }
+
+    .videos-grid {
+        gap: 16px;
+    }
+}
