@@ -36,13 +36,13 @@ async function likeFood(req, res) {
     const { foodId } = req.body;
     const user = req.user
 
-    const isAlreadyLiked = await likeModel.findOne({
+    const isAlreadyLiked = await LikeModel.findOne({
         user: user._id,
         food: foodId
     });
 
     if (isAlreadyLiked) {
-        await likeModel.deleteOne({
+        await LikeModel.deleteOne({
             user: user._id,
             food: foodId
         });
@@ -52,11 +52,11 @@ async function likeFood(req, res) {
         });
 
         return res.status(200).json({
-            message: 'Food item liked successfully',
+            message: 'Food item unliked successfully',
         });
     }
 
-    const like = await likeModel.create({
+    const like = await LikeModel.create({
         user: user._id,
         food: foodId
     });
@@ -83,6 +83,11 @@ async function saveFood(req, res) {
             user: user._id,
             food: foodId
         });
+
+        await foodModel.findByIdAndUpdate(foodId, {
+            $inc: { saveCount: -1 }
+        });
+
         return res.status(200).json({
             message: 'Food item unsaved successfully',
         });
@@ -91,6 +96,9 @@ async function saveFood(req, res) {
         user: user._id,
         food: foodId
     });
+    await foodModel.findByIdAndUpdate(foodId, {
+        $inc: { saveCount: 1 }
+    });
 
     res.status(201).json({
         message: 'Food item saved successfully',
@@ -98,10 +106,24 @@ async function saveFood(req, res) {
     });
 }
 
+async function getSaveFood(req, res) {
+    const user = req.user;
+    const savedFoods = await saveModel.find({ user: user._id }).populate('food');
+    if (!savedFoods || savedFoods.length === 0) {
+        return res.status(200).json({
+            message: 'No saved foods found',
+        });
+    }
+    res.status(200).json({
+        message: 'Saved foods fetched successfully',
+        savedFoods
+    });
+}
 
 module.exports = {
     createFood,
     getFoodItems,
     likeFood,
-    saveFood
+    saveFood,
+    getSaveFood,
 }

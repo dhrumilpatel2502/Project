@@ -111,6 +111,13 @@
     z-index: 3;
 }
 
+.actionGroup {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
 .actionBtn {
     width: 44px;
     height: 44px;
@@ -132,6 +139,15 @@
 
 .actionBtn.active {
     background: #ef4444;
+}
+
+.actionCount {
+    color: #ffffff;
+    font-size: 0.75rem;
+    line-height: 1;
+    opacity: 0.9;
+    min-width: 24px;
+    text-align: center;
 }
 
 /* Fixed bottom navigation */
@@ -164,6 +180,7 @@
     text-decoration: none;
     color: inherit;
     min-width: 72px;
+    position: relative;
 }
 
 .bottomNav .navItem .label {
@@ -176,6 +193,21 @@
 
 .bottomNav .navItem.active .icon {
     filter: drop-shadow(0 0 6px rgba(96, 165, 250, 0.5));
+}
+
+.bottomNav .tabBadge {
+    position: absolute;
+    top: 2px;
+    right: 18px;
+    background: #ef4444;
+    color: #fff;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    line-height: 1.4;
+    padding: 0 6px;
+    min-width: 18px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
 /* remove notch indicator for full-width bar */

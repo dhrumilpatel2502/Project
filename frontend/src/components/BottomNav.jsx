@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/reels.css";
+import { useSaved } from "../context/SavedContext";
 
 const BottomNav = () => {
+  const { saved } = useSaved();
+  const savedCount = Array.isArray(saved) ? saved.length : 0;
   return (
     <nav className="bottomNav" aria-label="Primary">
       <NavLink to="/" end className={({ isActive }) => `navItem ${isActive ? "active" : ""}`}>
@@ -20,6 +23,7 @@ const BottomNav = () => {
           </svg>
         </span>
         <span className="label">Saved</span>
+        {/* {savedCount > 0 && <span className="tabBadge" aria-label={`Saved count ${savedCount}`}>{savedCount}</span>} */}
       </NavLink>
     </nav>
   );
