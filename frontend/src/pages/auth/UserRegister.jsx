@@ -23,7 +23,7 @@ const UserRegister = () => {
       }
     );
 
-    console.log(response.data);
+    // console.log(response.data);
     navigate('/');
   };
 

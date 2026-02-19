@@ -43,7 +43,7 @@ const Home = () => {
     axios
       .get("http://localhost:3000/api/food", { withCredentials: true })
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         setVideos(response.data.foodItems);
       });
   }, []);

@@ -18,7 +18,7 @@ const PartnerLogin = () => {
       },
       { withCredentials: true },
     );
-    console.log(response.data);
+    // console.log(response.data);
     navigate("/create-food");
   };
   return (
